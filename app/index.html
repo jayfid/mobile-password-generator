@@ -32,7 +32,7 @@
           </div>
         </header>
 
-        <section class="cont text-center tpush-25">
+        <section id="app" class="cont text-center tpush-25">
 
           <div class="password-form style-a">
             <div class="input-group bpush-25">
@@ -53,7 +53,7 @@
 
               <div class="input input-select">
                 <select class="select-replace" id="keyboard">
-                  <option selected value="iphone6">iPhone 4/5/6</a>
+                  <option selected value="iphone456">iPhone 4/5/6</a>
                   <option value="android">Android</a>
                 </select>
                 <p class="suffix">keyboard</p>
@@ -63,8 +63,8 @@
 
             <div class="button-group bpush-25">
 
-              <button>Generate Password</button>
-              <button>Generate and Copy to Clipboard</button>
+              <button id="generate" class="btn-style-a">Generate Password</button>
+              <button id="generate-copy" class="btn-style-a">Generate and Copy to Clipboard</button>
 
             </div>
 
@@ -83,8 +83,8 @@
 
         </section>
 
-        <footer class="divide-above style-a text-center">
-          <p class="cont lean bpush-50"><small class="copyright">courtesy of <a href="http://www.newpointdesigns.com" title="Sponsor">newpoint designs</a> &amp; <a href="https://github.com/jayfid" title="pleb">@jayfid</a></small></p>
+        <footer class="cont style-a text-center">
+          <p class="divide-above cont lean bpush-50"><small class="copyright">courtesy of <a href="http://www.newpointdesigns.com" title="Sponsor">newpoint designs</a> &amp; <a href="https://github.com/jayfid" title="pleb">@jayfid</a></small></p>
         </footer>
 
         <div class="overlay">
@@ -111,8 +111,9 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
+    <script src="scripts/utils.vinyl.js"></script>
+    <script src="scripts/select.vinyl.js"></script>
     <script src="scripts/pwGenerator.class.js"></script>
-    <script src="scripts/vinylSelect.class.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>

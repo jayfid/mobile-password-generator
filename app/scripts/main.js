@@ -1,8 +1,33 @@
 // set up password generation
-(function(win) {
+(function() {
   'use strict';
-  win.pwGenerator = new pwGenerator();
-})(window);
+  submitPasswordForm();
+  var generateButton = document.getElementById('generate');
+  generateButton.addEventListener('click', submitPasswordForm);
+})();
+
+function submitPasswordForm() {
+  var charLenInput = document.getElementById('charlen'),
+  keyboardInput = document.getElementById('keyboard'),
+  passwordInput = document.getElementById('password');
+
+  if (charLenInput && keyboardInput && passwordInput) {
+      window.passwordGenerator =  window.passwordGenerator || new pwGenerator();
+      var charLen = charLenInput.options[charLenInput.selectedIndex].value;
+      var keyboardId = keyboardInput.options[keyboardInput.selectedIndex].value;
+      if (charLen && keyboardId) {
+        var newpass = window.passwordGenerator.generatePassword(charLen, keyboardId);
+        updatePasswordField(newpass);
+      }
+  }
+}
+
+function updatePasswordField(text) {
+  var passwordInput = document.getElementById('password');
+  if (passwordInput) {
+    passwordInput.setAttribute('value', text);
+  }
+}
 
 // set up select fields
 (function() {
