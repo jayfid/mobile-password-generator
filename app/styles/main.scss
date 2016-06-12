@@ -21,3 +21,26 @@ h2 {
 header {
   background: url('/images/mpg-banner.jpg') no-repeat 0 0 #333;
 }
+
+#password-field {
+  cursor: pointer;
+
+  &.focus {
+    background-color: #29bba6;
+    color: #fff;
+    * {
+      color: #fff;
+    }
+  }
+
+  
+}
+
+.jumbly {
+  text-align: center;
+  margin: 15%;
+  color: #fff;
+  font-size: 4rem;
+  font-family: "lexia-advertising", helvetica, arial, sans-serif;
+  font-style: italic;
+}

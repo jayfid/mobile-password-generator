@@ -1,12 +1,20 @@
 // set up password generation
 (function() {
   'use strict';
-  submitPasswordForm();
+  generateAndDisplayPassword();
   var generateButton = document.getElementById('generate');
   generateButton.addEventListener('click', submitPasswordForm);
+
+  var clipboard = new Clipboard('#password-field');
+
+  clipboard.on('success', function() {
+    // display "Copied" Message
+
+  });
 })();
 
-function submitPasswordForm() {
+function generateAndDisplayPassword() {
+  'use strict';
   var charLenInput = document.getElementById('charlen'),
   keyboardInput = document.getElementById('keyboard'),
   passwordInput = document.getElementById('password');
@@ -20,6 +28,12 @@ function submitPasswordForm() {
         updatePasswordField(newpass);
       }
   }
+}
+
+function submitPasswordForm() {
+  'use strict';
+  scrollIntoView(document.getElementById('password'), 'bottom');
+  generateAndDisplayPassword();
 }
 
 function updatePasswordField(text) {
