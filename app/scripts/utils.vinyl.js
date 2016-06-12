@@ -172,18 +172,18 @@ function getPosition(element) {
 function scrollIntoView(elem, position) {
   'use strict';
 
-    var currentWindowYOffset = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
-  if ( position && position === 'bottom' ) {
+  var currentWindowYOffset = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
+  var elementWindowYOffset;
+  if (position && position === 'bottom') {
     var elemY = getPosition(elem).y + currentWindowYOffset;
     var elemHeight = elem.offsetHeight;
     var elemBottomPixel = elemY + elemHeight;
     var extraSpacePixels = 30;
-    var windowHeight = window.innerHeight || docment.documentElement.clientHeight || document.body.clientHeight;
+    var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     var calculatedOffset = elemBottomPixel - windowHeight + extraSpacePixels;
-    var elementWindowYOffset = (calculatedOffset >= 0) ? calculatedOffset : 0;
-  }
-  else {
-    var elementWindowYOffset = getPosition(elem).y;
+    elementWindowYOffset = (calculatedOffset >= 0) ? calculatedOffset : 0;
+  } else {
+    elementWindowYOffset = getPosition(elem).y;
   }
 
   var initialWindowYOffset = currentWindowYOffset;

@@ -276,10 +276,10 @@ var pwGenerator = function() {
 pwGenerator.prototype.addiPhoneKeyboad = function() {
   'use strict';
   var iPhoneKeyboard = new pwGeneratorKeyboard('iphone456', 'iPhone 4/5/6');
-  iPhoneKeyboard.addContext('alpha_lowercase', ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'], ['alpha_uppercase']);
-  iPhoneKeyboard.addContext('alpha_uppercase', ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'], ['symbol_1']);
-  iPhoneKeyboard.addContext('symbol_1',        ['1','2','3','4','5','6','7','8','9','0','-','/',':',';','(',')','$','&','@','"','.',',','?','!','\''], ['alpha_lowercase', 'symbol_1']);
-  iPhoneKeyboard.addContext('symbol_2',        ['[',']','{','}','#','%','^','*','+','=','_','\\','|','~','<','>','€','£','¥','•','.',',','?','!','`'], ['alpha_lowercase', 'symbol_1']);
+  iPhoneKeyboard.addContext('alpha_lowercase', ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'], ['alpha_uppercase']);
+  iPhoneKeyboard.addContext('alpha_uppercase', ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'], ['symbol_1']);
+  iPhoneKeyboard.addContext('symbol_1', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '/', ':', ';', '(', ')', '$', '&', '@', '"', '.', ',', '?', '!', '\''], ['alpha_lowercase', 'symbol_1']);
+  iPhoneKeyboard.addContext('symbol_2', ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '\\', '|', '~', '<', '>', '€', '£', '¥', '•', '.', ',', '?', '!', '`'], ['alpha_lowercase', 'symbol_1']);
   this.addKeyboard(iPhoneKeyboard);
 };
 

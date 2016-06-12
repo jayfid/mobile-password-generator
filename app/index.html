@@ -1,121 +1,129 @@
 <!doctype html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mpg</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A simple password generator that produces passwords that are easier to enter on mobile devices.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile Password Generator | Secure Easy Password Generator</title>
+  <link rel="apple-touch-icon-precompressed" href="favicon-152.png">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/vinyl.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/vinyl.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-    <script src="https://use.typekit.net/tmi7eht.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
-  </head>
-  <body>
-    <div class="frame" data-role="role">
-      <div id="app" class="alley-500 lane color-bg-white">
-
-        <header>
-          <div class="heading cont">
-            <h1 class="color-text-white tpush-95">Mobile <br>Password <br>Generator</h1>
-            <p class="subheading color-text-white lean bpush-25 font-size-e">easy to enter on phones</p>
-          </div>
-        </header>
-
-        <section id="app" class="cont text-center tpush-25">
-
-          <div class="password-form style-a">
-            <div class="input-group bpush-25">
-
-              <div class="input input-select">
-                <select class="select-style-a select-replace" id="charlen">
-                  <option value="8">8</option>
-                  <option value="10">10</option>
-                  <option selected value="12">12</option>
-                  <option value="14">14</option>
-                  <option value="16">16</option>
-                  <option value="18">18</option>
-                  <option value="20">20</option>
-                  <option value="22">22</option>
-                </select>
-                <p class="suffix">Characters long</p>
+  <script src="https://use.typekit.net/tmi7eht.js"></script>
+  <script>
+    try {
+      Typekit.load({
+        async: true
+      });
+    } catch (e) {}
+  </script>
+</head>
+<body class="vinylsiding">
+  <div class="frame" data-role="role">
+    <div id="app" class="alley-500 lane color-bg-white">
+      <header>
+        <div class="heading cont">
+          <h1 class="color-text-white tpush-95">Mobile <br>Password <br>Generator</h1>
+          <p class="subheading color-text-white lean bpush-25 font-size-e">easy to enter on phones</p>
+        </div>
+      </header>
+      <section id="app" class="cont text-center tpush-25">
+        <div class="password-form style-a">
+          <div class="input-group bpush-25">
+            <div class="input input-select">
+              <div class="select-style select-style-a">
+                <div class="select-style-inner">
+                  <span class="select-style-value noselect"></span>
+                  <span class="select-style-arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="6" viewBox="0 0 7 6">
+                        <path class="cls-1 down-arrow" d="M450,399l-3.5,6-3.5-6h7Z" transform="translate(-443 -399)"/>
+                      </svg>
+                    </span>
+                </div>
+                <div class="select-style-options noselect">
+                  <p data-value="8">8</p>
+                  <p data-value="10">10</p>
+                  <p data-value="12">12</p>
+                  <p data-value="14" class="select-style-default">14</p>
+                  <p data-value="16">16</p>
+                  <p data-value="18">18</p>
+                  <p data-value="20">20</p>
+                  <input type="hidden" class="select-style-input" name="charlen" id="charlen" value="" />
+                </div>
               </div>
-
-              <div class="input input-select">
-                <select class="select-style-a select-replace" id="keyboard">
-                  <option selected value="iphone456">iPhone 4/5/6</a>
-                  <!-- <option value="android">Android</a> -->
-                </select>
-                <p class="suffix">keyboard</p>
+              <p class="suffix">Characters long</p>
+            </div>
+            <div class="input input-select">
+              <div class="select-style select-style-a">
+                <div class="select-style-inner">
+                  <span class="select-style-value noselect">iPhone4/5/6</span>
+                  <span class="select-style-arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="6" viewBox="0 0 7 6">
+                        <path class="cls-1 down-arrow" d="M450,399l-3.5,6-3.5-6h7Z" transform="translate(-443 -399)"/>
+                      </svg>
+                    </span>
+                </div>
+                <div class="select-style-options noselect">
+                  <p data-value="iphone456" class="select-style-default">iPhone 4/5/6</p>
+                  <input type="hidden" class="select-style-input" name="keyboard" id="keyboard" value="" />
+                </div>
               </div>
-
-            </div>
-
-            <div class="button-group bpush-25">
-
-              <button id="generate" class="btn-style-a">Generate Password</button>
-              <button id="generate-copy" class="btn-style-a">Generate and Copy to Clipboard</button>
-
-            </div>
-
-            <div data-clipboard-action="copy" data-clipboard-target="#password" id="password-field" class="input input-text bpush-50">
-              <div class="swap-show">
-                <p class="label">Password:</p>
-                <input type="text" class="code-text incognito text-center" id="password" value="kdce(392:slw)"/>
-                <p class="action flex-vcenter"><span>copy</span></p>
-            </div>
-            <div class="swap-hide ">
-              <p>Copied!</p>
-            </div>
+              <p class="suffix">keyboard</p>
             </div>
           </div>
-
-          <div class="qa-block divide-above">
-            <h2 class="fancy-dan bpush-50">How does it work?</h2>
-            <p class="cont bpush-50 display-text">The most time-consuming part of entering a password on a mobile device is switching between alphanumeric and symbol keyboards. By minimizing the number of times we switch contexts, we can generate passwords that are easier to enter while still being secure.</p>
+          <div class="button-group bpush-25">
+            <button id="generate" class="btn-style-a">Generate Password</button>
+            <button id="generate-copy" class="btn-style-a">Generate and Copy to Clipboard</button>
           </div>
-
-        </section>
-
-        <footer class="cont style-a text-center">
-          <p class="divide-above cont lean bpush-50"><small class="copyright">courtesy of <a href="http://www.newpointdesigns.com" title="Sponsor">newpoint designs</a> &amp; <a href="https://github.com/jayfid" title="pleb">@jayfid</a></small></p>
-        </footer>
-
-      </div>
+          <div data-clipboard-action="copy" data-clipboard-target="#password" id="password-field" class="input input-text bpush-50">
+            <div class="pw-wrapper">
+              <p class="label">Password:</p>
+              <input type="text" class="code-text incognito text-center" id="password" value="Password" />
+              <p class="action flex-vcenter"><span>copy</span></p>
+            </div>
+            <div class="copy-alert">
+              <p class="jumbly">Copied!</p>
+            </div>
+          </div>
+        </div>
+        <div class="qa-block divide-above">
+          <h2 class="fancy-dan bpush-50">How does it work?</h2>
+          <p class="cont bpush-50 display-text">The most time-consuming part of entering a password on a mobile device is switching between alphanumeric and symbol keyboards. By minimizing the number of times we switch contexts, we can generate passwords that are easier to enter while still
+            being secure.</p>
+        </div>
+      </section>
+      <footer class="cont style-a text-center">
+        <p class="divide-above cont lean bpush-50"><small class="copyright">courtesy of <a href="http://www.newpointdesigns.com" title="Sponsor">newpoint designs</a> &amp; <a href="https://github.com/jayfid" title="pleb">@jayfid</a></small></p>
+      </footer>
     </div>
+  </div>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-77260909-2', 'auto');
+    ga('send', 'pageview');
+  </script>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+  <!-- build:js scripts/main.js -->
+  <script src="scripts/cookies.min.js"></script>
+  <script src="scripts/clipboard.min.js"></script>
+  <script src="scripts/utils.vinyl.js"></script>
+  <script src="scripts/select.vinyl.js"></script>
+  <script src="scripts/pwGenerator.class.js"></script>
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/js.cookie.js"></script>
-    <script src="scripts/clipboard.min.js"></script>
-    <script src="scripts/utils.vinyl.js"></script>
-    <script src="scripts/select.vinyl.js"></script>
-    <script src="scripts/pwGenerator.class.js"></script>
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
-  </body>
+</body>
 </html>
