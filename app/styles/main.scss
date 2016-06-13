@@ -25,6 +25,7 @@ header {
 #password-field {
   cursor  : pointer;
   overflow: hidden;
+  position: relative;
 
   &.focus {
     background-color: #29bba6;

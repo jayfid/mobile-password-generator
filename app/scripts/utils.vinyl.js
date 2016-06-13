@@ -212,3 +212,11 @@ function scrollIntoView( elem, position ) {
     }
   }, 25 );
 }
+
+// credit - http://stackoverflow.com/a/5354536
+function checkVisible(elm) {
+  'use strict';
+  var rect = elm.getBoundingClientRect();
+  var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+  return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+}

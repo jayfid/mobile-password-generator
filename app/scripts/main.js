@@ -13,7 +13,9 @@
   generateButton.addEventListener( 'click', submitPasswordForm );
   var generateAndCopyButton = document.getElementById( 'generate-copy' );
   generateAndCopyButton.addEventListener( 'click', function () {
+    document.getElementById('password').setSelectionRange(0,0);
     document.getElementById('password').blur();
+    //document.getElementById('')
     submitPasswordForm();
     document.getElementById( 'password-field' ).click();
   } );
@@ -40,8 +42,12 @@
     var initialOptions = Cookies.get( 'mpg_options' );
     if ( initialOptions ) {
       var initialOptionsObj = JSON.parse(initialOptions);
+      var foundElem = null;
       for ( var j in initialOptionsObj ) {
-        document.getElementById( j ).vinylSelect.setValue( initialOptionsObj[ j ] );
+        foundElem = document.getElementById( j );
+        if ( foundElem && foundElem.tagName === 'INPUT') {
+          foundElem.vinylSelect.setValue( initialOptionsObj[ j ] );
+        }
       }
     }
   }
@@ -74,7 +80,10 @@ function generateAndDisplayPassword() {
 
 function submitPasswordForm() {
   'use strict';
-  scrollIntoView( document.getElementById( 'password' ), 'bottom' );
+  var pwElem = document.getElementById( 'password' );
+  if ( !checkVisible(pwElem) ) {
+    scrollIntoView( pwElem, 'bottom' );
+  }
   generateAndDisplayPassword();
 }
 
