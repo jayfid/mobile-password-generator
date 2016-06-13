@@ -13,10 +13,10 @@
   generateButton.addEventListener( 'click', submitPasswordForm );
   var generateAndCopyButton = document.getElementById( 'generate-copy' );
   generateAndCopyButton.addEventListener( 'click', function () {
+    // attempt to get iPhones to blur focus then show a new copy prompt
     document.getElementById('password').setSelectionRange(0,0);
     document.getElementById('password').blur();
-    //document.getElementById('')
-    submitPasswordForm();
+    document.getElementById('generate').click();
     document.getElementById( 'password-field' ).click();
   } );
 
