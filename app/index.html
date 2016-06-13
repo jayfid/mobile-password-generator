@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="A simple password generator that produces passwords that are easier to enter on mobile devices.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Mobile Password Generator | Secure Easy Password Generator</title>
   <link rel="apple-touch-icon-precompressed" href="favicon-152.png">
 
@@ -25,7 +25,7 @@
 
 <body class="vinylsiding">
   <div class="frame" data-role="role">
-    <div id="app" class="alley-500 lane color-bg-white">
+    <div class="alley-500 lane color-bg-white">
       <header>
         <div class="heading cont">
           <h1 class="color-text-white tpush-95">Mobile <br>Password <br>Generator</h1>
@@ -80,18 +80,21 @@
             <button id="generate" class="btn-style-a">Generate Password</button>
             <button id="generate-copy" class="btn-style-a">Generate and Copy to Clipboard</button>
           </div>
-          <div data-clipboard-action="copy" data-clipboard-target="#password" id="password-field" class="input input-text bpush-50">
+          <div data-clipboard-action="copy" data-clipboard-target="#password" id="password-field" class="input input-text bpush-10">
             <div class="pw-wrapper">
               <p class="label">Password:</p>
-              <input type="text" class="code-text incognito text-center" id="password" value="Password" />
+              <input type="text" class="code-text incognito text-center" id="password" value="Password" readonly />
               <p class="action flex-vcenter"><span>copy</span></p>
             </div>
             <div class="copy-alert">
               <p class="jumbly">Copied!</p>
             </div>
           </div>
+          <div class="copy-error msg info">
+            <p>Select Copy on your device.</p>
+          </div>
         </div>
-        <div class="qa-block divide-above">
+        <div class="qa-block divide-above tpush-40">
           <h2 class="fancy-dan bpush-50">How does it work?</h2>
           <p class="cont bpush-50 display-text">The most time-consuming part of entering a password on a mobile device is switching between alphanumeric and symbol keyboards. By minimizing the number of times we switch contexts, we can generate passwords that are easier to enter while still
             being secure.</p>

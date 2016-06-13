@@ -41,6 +41,10 @@ header {
   }
 }
 
+.input .action {
+  min-width: 3.5rem;
+}
+
 .copy-alert {
   position        : absolute;
   top             : -100%;
@@ -72,4 +76,11 @@ header {
 
 .password-segment:not(:last-child) {
   padding-right: 15px;
+}
+
+.copy-error {
+  display: none;
+  &.show {
+    display: block;
+  }
 }

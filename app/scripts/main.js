@@ -13,6 +13,7 @@
   generateButton.addEventListener( 'click', submitPasswordForm );
   var generateAndCopyButton = document.getElementById( 'generate-copy' );
   generateAndCopyButton.addEventListener( 'click', function () {
+    document.getElementById('password').blur();
     submitPasswordForm();
     document.getElementById( 'password-field' ).click();
   } );
@@ -20,6 +21,10 @@
   // Clipboard
   var clipboard = new Clipboard( '#password-field' );
   clipboard.on( 'success', showCopySuccess );
+  clipboard.on('error', function() {
+    // show text to encourage manual copying
+    addClass(document.getElementsByClassName('copy-error')[0], 'show');
+  });
 
   // Cookies
   if ( window.Cookies ) {
@@ -34,7 +39,7 @@
 
     var initialOptions = Cookies.get( 'mpg_options' );
     if ( initialOptions ) {
-      initialOptionsObj = JSON.parse(initialOptions);
+      var initialOptionsObj = JSON.parse(initialOptions);
       for ( var j in initialOptionsObj ) {
         document.getElementById( j ).vinylSelect.setValue( initialOptionsObj[ j ] );
       }
