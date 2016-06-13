@@ -13,20 +13,16 @@
   generateButton.addEventListener( 'click', submitPasswordForm );
   var generateAndCopyButton = document.getElementById( 'generate-copy' );
   generateAndCopyButton.addEventListener( 'click', function () {
-    // attempt to get iPhones to blur focus then show a new copy prompt
-    document.getElementById('password').setSelectionRange(0,0);
-    document.getElementById('password').blur();
-    document.getElementById('generate').click();
+    // reset focus on mobile devices
+    document.activeElement.blur();
+    submitPasswordForm();
     document.getElementById( 'password-field' ).click();
   } );
 
   // Clipboard
   var clipboard = new Clipboard( '#password-field' );
   clipboard.on( 'success', showCopySuccess );
-  clipboard.on('error', function() {
-    // show text to encourage manual copying
-    addClass(document.getElementsByClassName('copy-error')[0], 'show');
-  });
+  clipboard.on( 'error', showCopyError );
 
   // Cookies
   if ( window.Cookies ) {
@@ -35,26 +31,35 @@
         charlen: document.getElementById( 'charlen' ).value,
         keyboard: document.getElementById( 'keyboard' ).value
       };
-      console.log( 'saving cookie' );
       Cookies.set( 'mpg_options', JSON.stringify( options ) );
     } );
-
-    var initialOptions = Cookies.get( 'mpg_options' );
-    if ( initialOptions ) {
-      var initialOptionsObj = JSON.parse(initialOptions);
-      var foundElem = null;
-      for ( var j in initialOptionsObj ) {
-        foundElem = document.getElementById( j );
-        if ( foundElem && foundElem.tagName === 'INPUT') {
-          foundElem.vinylSelect.setValue( initialOptionsObj[ j ] );
-        }
-      }
-    }
+    initializeOptions();
   }
 
   // Password
   generateAndDisplayPassword();
 } )();
+
+function initializeOptions() {
+  'use strict';
+  var initialOptions = Cookies.get( 'mpg_options' );
+  if ( initialOptions ) {
+    var initialOptionsObj = JSON.parse( initialOptions );
+    var foundElem = null;
+    for ( var j in initialOptionsObj ) {
+      foundElem = document.getElementById( j );
+      if ( foundElem && foundElem.tagName === 'INPUT' ) {
+        foundElem.vinylSelect.setValue( initialOptionsObj[ j ] );
+      }
+    }
+  }
+}
+
+function showCopyError() {
+  'use strict';
+  // show text to encourage manual copying
+  addClass( document.getElementsByClassName( 'copy-error' )[ 0 ], 'show' );
+}
 
 function showCopySuccess() {
   'use strict';
@@ -80,8 +85,9 @@ function generateAndDisplayPassword() {
 
 function submitPasswordForm() {
   'use strict';
+  removeClass( document.getElementsByClassName( 'copy-error' )[ 0 ], 'show' );
   var pwElem = document.getElementById( 'password' );
-  if ( !checkVisible(pwElem) ) {
+  if ( !checkVisible( pwElem ) ) {
     scrollIntoView( pwElem, 'bottom' );
   }
   generateAndDisplayPassword();

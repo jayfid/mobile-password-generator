@@ -151,24 +151,6 @@ function getParam( param ) {
   return comparisonResult;
 }
 
-// credit - http://stackoverflow.com/a/24829409
-function getPosition( element ) {
-  'use strict';
-  var xPosition = 0;
-  var yPosition = 0;
-
-  while ( element ) {
-    xPosition += ( element.offsetLeft - element.scrollLeft + element.clientLeft );
-    yPosition += ( element.offsetTop - element.scrollTop + element.clientTop );
-    element = element.offsetParent;
-  }
-
-  return {
-    x: xPosition,
-    y: yPosition
-  };
-}
-
 function scrollIntoView( elem, position ) {
   'use strict';
 
@@ -213,10 +195,47 @@ function scrollIntoView( elem, position ) {
   }, 25 );
 }
 
+// credit - http://stackoverflow.com/a/24829409
+function getPosition( element ) {
+  'use strict';
+  var xPosition = 0;
+  var yPosition = 0;
+
+  while ( element ) {
+    xPosition += ( element.offsetLeft - element.scrollLeft + element.clientLeft );
+    yPosition += ( element.offsetTop - element.scrollTop + element.clientTop );
+    element = element.offsetParent;
+  }
+
+  return {
+    x: xPosition,
+    y: yPosition
+  };
+}
+
 // credit - http://stackoverflow.com/a/5354536
 function checkVisible(elm) {
   'use strict';
   var rect = elm.getBoundingClientRect();
   var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
   return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+}
+
+// credit - http://stackoverflow.com/a/9039885
+function iOS() {
+  'use strict';
+  var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+  if (!!navigator.platform) {
+    while (iDevices.length) {
+      if (navigator.platform === iDevices.pop()){ return true; }
+    }
+  }
+  return false;
 }
