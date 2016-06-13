@@ -65,3 +65,11 @@ header {
   font-family: "lexia-advertising", helvetica, arial, sans-serif;
   font-style : italic;
 }
+
+.password-segment {
+  font-size: 1.2rem;
+}
+
+.password-segment:not(:last-child) {
+  padding-right: 15px;
+}

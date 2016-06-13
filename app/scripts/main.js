@@ -1,81 +1,82 @@
 // set up password generation
-(function() {
+( function () {
   'use strict';
 
   // Selects
-  var selects = document.getElementsByClassName('select-style');
-  for (var i = 0; i < selects.length; i++) {
-    new VinylSelect(selects[i]);
+  var selects = document.getElementsByClassName( 'select-style' );
+  for ( var i = 0; i < selects.length; i++ ) {
+    new vinylSelect( selects[ i ] );
   }
 
   // Buttons
-  var generateButton = document.getElementById('generate');
-  generateButton.addEventListener('click', submitPasswordForm);
-  var generateAndCopyButton = document.getElementById('generate-copy');
-  generateAndCopyButton.addEventListener('click', function() {
+  var generateButton = document.getElementById( 'generate' );
+  generateButton.addEventListener( 'click', submitPasswordForm );
+  var generateAndCopyButton = document.getElementById( 'generate-copy' );
+  generateAndCopyButton.addEventListener( 'click', function () {
     submitPasswordForm();
-    document.getElementById('password-field').click();
-  });
+    document.getElementById( 'password-field' ).click();
+  } );
 
   // Clipboard
-  var clipboard = new Clipboard('#password-field');
-  clipboard.on('success', showCopySuccess);
+  var clipboard = new Clipboard( '#password-field' );
+  clipboard.on( 'success', showCopySuccess );
 
   // Cookies
-  if (window.Cookies) {
-    document.body.addEventListener('vinylSelectUpdate', function(e) {
+  if ( window.Cookies ) {
+    document.body.addEventListener( 'vinylSelectUpdate', function ( e ) {
       var options = {
-        charlen: document.getElementById('charlen').value,
-        keyboard: document.getElementById('keyboard').value
+        charlen: document.getElementById( 'charlen' ).value,
+        keyboard: document.getElementById( 'keyboard' ).value
       };
-      console.log('saving cookie');
-      Cookies.set('mpg_options', JSON.stringify(options));
-    });
-    var initialOptions = JSON.parse(Cookies.get('mpg_options'));
-    console.log('initial cookie', initialOptions);
-    if (initialOptions) {
-      for (var j in initialOptions) {
-        document.getElementById(j).vinylSelect.setValue(initialOptions[j]);
+      console.log( 'saving cookie' );
+      Cookies.set( 'mpg_options', JSON.stringify( options ) );
+    } );
+
+    var initialOptions = Cookies.get( 'mpg_options' );
+    if ( initialOptions ) {
+      initialOptionsObj = JSON.parse(initialOptions);
+      for ( var j in initialOptionsObj ) {
+        document.getElementById( j ).vinylSelect.setValue( initialOptionsObj[ j ] );
       }
     }
   }
 
   // Password
   generateAndDisplayPassword();
-})();
+} )();
 
 function showCopySuccess() {
   'use strict';
-  toggleClass(document.getElementsByClassName('copy-alert')[0], 'slide');
+  toggleClass( document.getElementsByClassName( 'copy-alert' )[ 0 ], 'slide' );
 }
 
 function generateAndDisplayPassword() {
   'use strict';
-  var charLenInput = document.getElementById('charlen'),
-    keyboardInput = document.getElementById('keyboard'),
-    passwordInput = document.getElementById('password');
+  var charLenInput = document.getElementById( 'charlen' ),
+    keyboardInput = document.getElementById( 'keyboard' ),
+    passwordInput = document.getElementById( 'password' );
 
-  if (charLenInput && keyboardInput && passwordInput) {
+  if ( charLenInput && keyboardInput && passwordInput ) {
     window.passwordGenerator = window.passwordGenerator || new pwGenerator();
     var charLen = charLenInput.value;
     var keyboardId = keyboardInput.value;
-    if (charLen && keyboardId) {
-      var newpass = window.passwordGenerator.generatePassword(charLen, keyboardId);
-      updatePasswordField(newpass);
+    if ( charLen && keyboardId ) {
+      var newpass = window.passwordGenerator.generatePassword( charLen, keyboardId );
+      updatePasswordField( newpass );
     }
   }
 }
 
 function submitPasswordForm() {
   'use strict';
-  scrollIntoView(document.getElementById('password'), 'bottom');
+  scrollIntoView( document.getElementById( 'password' ), 'bottom' );
   generateAndDisplayPassword();
 }
 
-function updatePasswordField(text) {
+function updatePasswordField( text ) {
   'use strict';
-  var passwordInput = document.getElementById('password');
-  if (passwordInput) {
-    passwordInput.setAttribute('value', text);
+  var passwordInput = document.getElementById( 'password' );
+  if ( passwordInput ) {
+    passwordInput.setAttribute( 'value', text );
   }
 }
