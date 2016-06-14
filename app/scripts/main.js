@@ -11,18 +11,29 @@
   // Buttons
   var generateButton = document.getElementById( 'generate' );
   generateButton.addEventListener( 'click', submitPasswordForm );
-  var generateAndCopyButton = document.getElementById( 'generate-copy' );
-  generateAndCopyButton.addEventListener( 'click', function () {
-    // reset focus on mobile devices
-    document.activeElement.blur();
-    submitPasswordForm();
-    document.getElementById( 'password-field' ).click();
-  } );
+
+  // iOS does not allow copying via js
+  if ( !iOS() ) {
+    removeClass(document.getElementsByClassName('action')[0], 'hide');
+
+    // create a shortcut button to generate the pw and copy it at the same time
+    var copyAndGenBtn = document.createElement('button');
+    copyAndGenBtn.setAttribute('type', 'button');
+    copyAndGenBtn.setAttribute('id', 'generate-copy');
+    copyAndGenBtn.className = 'btn-style-a';
+    copyAndGenBtn.innerHTML = 'Generate and Copy to Clipboard';
+    copyAndGenBtn.addEventListener( 'click', generateAndCopy );
+    document.getElementsByClassName('button-group')[0].appendChild(copyAndGenBtn);
 
   // Clipboard
-  var clipboard = new Clipboard( '#password-field' );
-  clipboard.on( 'success', showCopySuccess );
-  clipboard.on( 'error', showCopyError );
+
+    var clipboard = new Clipboard( '#password-field' );
+    clipboard.on( 'success', showCopySuccess );
+    clipboard.on( 'error', showCopyError );
+  }
+  else {
+    document.getElementById('password-field').addEventListener('click', focusPasswordField);
+  }
 
   // Cookies
   if ( window.Cookies ) {
@@ -39,6 +50,22 @@
   // Password
   generateAndDisplayPassword();
 } )();
+
+function focusPasswordField() {
+  'use strict';
+  var passwordInput = document.getElementById('password');
+  passwordInput.removeAttribute('readonly');
+  passwordInput.focus();
+  passwordInput.setSelectionRange(0, 999);
+  passwordInput.setAttribute('readonly', 'readonly');
+}
+
+function generateAndCopy() {
+  'use strict';
+  document.activeElement.blur();
+  submitPasswordForm();
+  document.getElementById( 'password-field' ).click();
+}
 
 function initializeOptions() {
   'use strict';
@@ -91,6 +118,7 @@ function submitPasswordForm() {
     scrollIntoView( pwElem, 'bottom' );
   }
   generateAndDisplayPassword();
+  focusPasswordField();
 }
 
 function updatePasswordField( text ) {
