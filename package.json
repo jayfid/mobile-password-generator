@@ -1,44 +1,61 @@
 {
+  "name": "mobile-password-generator",
+  "version": "2.0.0",
+  "description": "Mobile Password Generator",
   "private": true,
   "engines": {
-    "node": ">=4"
+    "node": ">=16.15"
   },
+  "main": "src/index.js",
+  "scripts": {
+    "clean": "rm -rf node_modules dist .sass-cache",
+    "pretty": "npx prettier --write .",
+    "lint": "npx eslint src",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve",
+    "start": "webpack serve",
+    "deploy": "aws s3 cp ./dist/ 's3://www.mobile-pw.xyz' --recursive --cache-control public,max-age=604800",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id EUA6EG112A282 --paths '/*' > /dev/null",
+    "ship": "npm run-script build && npm run-script deploy && npm run-script invalidate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayfid/mobile-password-generator.git"
+  },
+  "author": "jayfid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayfid/mobile-password-generator/issues"
+  },
+  "homepage": "https://github.com/jayfid/mobile-password-generator#readme",
   "devDependencies": {
-    "babel-core": "^6.4.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.5.2",
-    "browser-sync": "^2.2.1",
-    "del": "^1.1.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.1",
-    "gulp-babel": "^6.1.1",
-    "gulp-cache": "^0.4.2",
-    "gulp-cssnano": "^2.0.0",
-    "gulp-eslint": "^2.0.0",
-    "gulp-htmlmin": "^1.3.0",
-    "gulp-if": "^2.0.0",
-    "gulp-imagemin": "^2.2.1",
-    "gulp-load-plugins": "^0.10.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-sass": "^2.0.0",
-    "gulp-size": "^1.2.1",
-    "gulp-sourcemaps": "^1.5.0",
-    "gulp-uglify": "^1.1.0",
-    "gulp-useref": "^3.0.0",
-    "main-bower-files": "^2.5.0",
-    "wiredep": "^2.2.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true,
-      "browser": true
-    },
-    "rules": {
-      "quotes": [
-        2,
-        "single"
-      ]
-    }
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@webpack-cli/generators": "^2.5.0",
+    "autoprefixer": "^10.4.8",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "favicons": "^6.2.2",
+    "favicons-webpack-plugin": "^5.0.2",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.16",
+    "postcss-loader": "^7.0.1",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.4",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0"
   }
 }

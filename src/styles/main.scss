@@ -1,0 +1,87 @@
+@import "src/styles/normalize";
+@import "src/styles/fonts";
+@import "src/styles/vinyl";
+
+body {
+  background: #e6e9ee;
+  font-family: "Montserrat", helvetica, arial, sans-serif;
+}
+
+h1 {
+  font-family: "Alfa Slab One", serif;
+  font-size: 2.75em;
+  font-size: 2.75rem;
+}
+
+h2 {
+  color: #161616;
+  font-weight: 300;
+  font-size: 1.714rem;
+}
+
+header {
+  background: url("./mpg-banner.webp") no-repeat 0 0 #333;
+}
+
+#password-field {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  &.focus {
+    background-color: #29bba6;
+    color: #fff;
+
+    * {
+      color: #fff;
+      cursor: pointer !important;
+    }
+
+    input {
+      cursor: pointer;
+    }
+  }
+}
+
+.input .action {
+  min-width: 3.5rem;
+}
+
+.copy-alert {
+  position: absolute;
+  top: -100%;
+  transition: top 1.2s;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #29bba6;
+  color: #fff;
+
+  &.slide {
+    top: 100%;
+  }
+}
+
+.jumbly {
+  text-align: center;
+  color: #fff;
+  font-size: 4rem;
+  font-family: "Alfa Slab One", serif;
+}
+
+.password-segment {
+  font-size: 1.2rem;
+}
+
+.password-segment:not(:last-child) {
+  padding-right: 15px;
+}
+
+.copy-error {
+  display: none;
+  &.show {
+    display: block;
+  }
+}
