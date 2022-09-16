@@ -17,8 +17,8 @@ const generateButton = document.querySelector("#generate");
 generateButton.addEventListener("click", submitPasswordForm);
 
 // Clipboard
-document.querySelector('#password-field').addEventListener('click', () => {
-  const textValue = document.querySelector('#password').value;
+document.querySelector("#password-field").addEventListener("click", () => {
+  const textValue = document.querySelector("#password").value;
   navigator.clipboard.writeText(textValue).then(() => {
     showCopySuccess();
   });
@@ -43,13 +43,16 @@ if (!iOS()) {
 
 // Save options
 document.body.addEventListener("vinylSelectUpdate", () => {
-  const options = [{
-    id: "charlen",
-    value: document.getElementById("charlen").value
-  },{
-    id: "keyboard",
-    value: document.getElementById("keyboard").value
-  }];
+  const options = [
+    {
+      id: "charlen",
+      value: document.getElementById("charlen").value,
+    },
+    {
+      id: "keyboard",
+      value: document.getElementById("keyboard").value,
+    },
+  ];
   localStorage.setItem("mpg_options", JSON.stringify(options));
 });
 
