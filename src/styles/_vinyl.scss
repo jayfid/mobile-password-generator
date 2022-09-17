@@ -3,6 +3,9 @@
  * A minor framework for web apps.
  * License @ https://github.com/jayfid/vinyl/LICENSE
  */
+
+ $accent-color: #157467;
+
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -856,7 +859,7 @@ a.msg:hover p {
 .style-a .input {
   position: relative;
   border-radius: 0.214286rem;
-  border: 1px solid #29bba6;
+  border: 1px solid $accent-color;
   padding-top: 0.714286rem;
   padding-bottom: 0.714286rem;
 }
@@ -875,7 +878,7 @@ a.msg:hover p {
 .style-a .input .label,
 .style-a .input .prefix,
 .style-a .input .suffix {
-  color: #29bba6;
+  color: $accent-color;
 }
 .style-a .input .suffix {
   margin: 0 0 0 0.5rem;
@@ -903,12 +906,12 @@ a.msg:hover p {
 .style-a button.btn-style-a {
   width: 100%;
   border-radius: 0.571429rem;
-  border: 1px solid #29bba6;
+  border: 1px solid $accent-color;
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #29bba6;
+  background: $accent-color;
   color: #fff;
   text-align: center;
   line-height: 1.5rem;
@@ -933,7 +936,7 @@ a.msg:hover p {
 }
 .style-a button.btn-style-a:active {
   background-color: #fff !important;
-  color: #29bba6 !important;
+  color: $accent-color !important;
 }
 .style-a button.btn-style-a:focus {
   outline: none;
@@ -953,7 +956,7 @@ a.msg:hover p {
 }
 .style-a .button-group button.btn-style-a:last-child {
   border-radius: 0 0 0.571429rem 0.571429rem;
-  background-color: #30a494;
+  background-color: #0d4a42;
 }
 .style-a .button-group button.btn-style-a:only-child {
   border-radius: 0.571429rem;
@@ -964,9 +967,9 @@ a.msg:hover p {
 }
 .style-a .select-style .select-style-inner {
   cursor: pointer;
-  background-color: #29bba6;
+  background-color: $accent-color;
   color: #fff;
-  border: 1px solid #29bba6;
+  border: 1px solid $accent-color;
   border-radius: 0.571429rem;
   position: relative;
   overflow: hidden;
@@ -976,10 +979,10 @@ a.msg:hover p {
 }
 .style-a .select-style .select-style-inner:hover {
   background-color: #fff;
-  color: #29bba6;
+  color: $accent-color;
 }
 .style-a .select-style .select-style-inner:hover .down-arrow {
-  fill: #29bba6;
+  fill: $accent-color;
 }
 .style-a .select-style .select-style-inner .select-style-arrow {
   margin: 0 1.2rem 0 0;
@@ -1003,7 +1006,7 @@ a.msg:hover p {
   top: calc(100% - 1px);
   left: 0;
   text-align: center;
-  border: 1px solid #29bba6;
+  border: 1px solid $accent-color;
   border-radius: 0 0 0.571429rem 0.571429rem;
   padding: 0.25rem 0;
 }
@@ -1016,7 +1019,7 @@ a.msg:hover p {
   margin: 0;
 }
 .style-a .select-style .select-style-options p:hover {
-  background-color: #29bba6;
+  background-color: $accent-color;
   color: #fff;
 }
 .style-a .select-style .select-style-options p.select-style-default {

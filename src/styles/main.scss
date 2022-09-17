@@ -2,6 +2,8 @@
 @import "src/styles/fonts";
 @import "src/styles/vinyl";
 
+$accent-color: #157467;
+
 body {
   background: #e6e9ee;
   font-family: "Montserrat", helvetica, arial, sans-serif;
@@ -29,7 +31,7 @@ header {
   position: relative;
 
   &.focus {
-    background-color: #29bba6;
+    background-color: $accent-color;
     color: #fff;
 
     * {
@@ -58,7 +60,7 @@ header {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: #29bba6;
+  background-color: $accent-color;
   color: #fff;
 
   &.slide {
