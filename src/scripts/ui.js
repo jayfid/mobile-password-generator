@@ -1,5 +1,9 @@
 import PasswordGenerator from "./generator";
 
+// number of times to switch contexts during password generation.
+// May make sense to expose this under a "Password Strength toggle"
+const PASSWORD_CONTEXT_SWITCHES = 2;
+
 function updatePasswordField(text) {
   document.querySelector("#password")?.setAttribute("value", text);
 }
@@ -26,7 +30,8 @@ export function generateAndDisplayPassword() {
     if (charLen && keyboardId) {
       const newpass = window.passwordGenerator.generatePassword(
         charLen,
-        keyboardId
+        keyboardId,
+        PASSWORD_CONTEXT_SWITCHES
       );
       updatePasswordField(newpass);
     }
