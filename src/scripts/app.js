@@ -11,8 +11,12 @@ document.querySelectorAll(".select-style").forEach((item) => {
 });
 
 // Buttons
-const generateButton = document.querySelector("#generate");
-generateButton.addEventListener("click", submitPasswordForm);
+document
+  .querySelector("#generate")
+  .addEventListener("click", submitPasswordForm);
+document
+  .querySelector("#generate-copy")
+  .addEventListener("click", generateAndCopy);
 
 // Clipboard
 document.querySelector("#password-field").addEventListener("click", () => {
@@ -21,15 +25,6 @@ document.querySelector("#password-field").addEventListener("click", () => {
     showCopySuccess();
   });
 });
-
-// create a shortcut button to generate the pw and copy it at the same time
-const copyAndGenBtn = document.createElement("button");
-copyAndGenBtn.setAttribute("type", "button");
-copyAndGenBtn.setAttribute("id", "generate-copy");
-copyAndGenBtn.className = "btn-style-a";
-copyAndGenBtn.innerHTML = "Generate and Copy to Clipboard";
-copyAndGenBtn.addEventListener("click", generateAndCopy);
-document.querySelector(".button-group").appendChild(copyAndGenBtn);
 
 // Save options
 document.body.addEventListener("vinylSelectUpdate", () => {
