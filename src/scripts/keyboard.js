@@ -20,7 +20,7 @@ class KeyboardLayout {
   // return count of characters in current context
   getCharacterCount() {
     if (this.currentContext) {
-      return this.contexts[this.currentContext].characters.length
+      return this.contexts[this.currentContext].characters.length;
     }
     return false;
   }
@@ -50,10 +50,15 @@ class KeyboardLayout {
 
   // choose next context and replace current context with it
   nextContext() {
-    if (!this.contexts[this.currentContext].next || !this.contexts[this.currentContext].next.length) {
+    if (
+      !this.contexts[this.currentContext].next ||
+      !this.contexts[this.currentContext].next.length
+    ) {
       throw Error("no available context");
     }
-    const nextIndex = getRandomIntWithLimit(this.contexts[this.currentContext].next.length);
+    const nextIndex = getRandomIntWithLimit(
+      this.contexts[this.currentContext].next.length
+    );
     const nextContextId = this.contexts[this.currentContext].next[nextIndex];
     this.currentContext = nextContextId;
   }
