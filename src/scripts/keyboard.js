@@ -1,3 +1,4 @@
+import KeyboardContext from "./keyboardContext";
 import { getRandomIntWithLimit } from "./random";
 
 class KeyboardLayout {
@@ -10,7 +11,7 @@ class KeyboardLayout {
 
   // add/update context in lists of contexts
   addContext(id, characters, next) {
-    const context = { characters, next };
+    const context = new KeyboardContext(id, characters, next);
     this.contexts[id] = context;
     if (this.currentContext === null) {
       this.currentContext = id;
@@ -50,16 +51,8 @@ class KeyboardLayout {
 
   // choose next context and replace current context with it
   nextContext() {
-    if (
-      !this.contexts[this.currentContext].next ||
-      !this.contexts[this.currentContext].next.length
-    ) {
-      throw Error("no available context");
-    }
-    const nextIndex = getRandomIntWithLimit(
-      this.contexts[this.currentContext].next.length
-    );
-    const nextContextId = this.contexts[this.currentContext].next[nextIndex];
+    const nextContextId =
+      this.contexts[this.currentContext].getNextRandomContext();
     this.currentContext = nextContextId;
   }
 }
