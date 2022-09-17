@@ -2,7 +2,6 @@ import {
   generateAndCopy,
   generateAndDisplayPassword,
   submitPasswordForm,
-
 } from "./passwordForm";
 import VinylSelect from "./select";
 import PasswordGenerator from "./generator";

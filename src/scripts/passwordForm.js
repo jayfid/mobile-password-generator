@@ -5,12 +5,12 @@ import { checkVisible, scrollIntoView } from "./ui";
 const PASSWORD_CONTEXT_SWITCHES = 2;
 
 const focusPasswordField = () => {
-    const passwordInput = document.querySelector("#password");
-    passwordInput.removeAttribute("readonly");
-    passwordInput.focus();
-    passwordInput.setSelectionRange(0, 999);
-    passwordInput.setAttribute("readonly", "readonly");
-}
+  const passwordInput = document.querySelector("#password");
+  passwordInput.removeAttribute("readonly");
+  passwordInput.focus();
+  passwordInput.setSelectionRange(0, 999);
+  passwordInput.setAttribute("readonly", "readonly");
+};
 
 export const generateAndDisplayPassword = () => {
   const charLen = document.querySelector("#charlen").value;
@@ -25,7 +25,7 @@ export const generateAndDisplayPassword = () => {
     PASSWORD_CONTEXT_SWITCHES
   );
   document.querySelector("#password")?.setAttribute("value", newpass);
-}
+};
 
 export const submitPasswordForm = () => {
   const pwElem = document.querySelector("#password");
@@ -34,10 +34,10 @@ export const submitPasswordForm = () => {
   }
   generateAndDisplayPassword();
   focusPasswordField();
-}
+};
 
 export const generateAndCopy = () => {
   document.activeElement.blur();
   submitPasswordForm();
   document.querySelector("#password-field").click();
-}
+};

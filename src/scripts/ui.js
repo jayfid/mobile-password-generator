@@ -1,4 +1,3 @@
-
 // credit - http://stackoverflow.com/a/5354536
 export const checkVisible = (elm) => {
   const rect = elm.getBoundingClientRect();
@@ -7,7 +6,7 @@ export const checkVisible = (elm) => {
     window.innerHeight
   );
   return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
-}
+};
 
 // credit - http://stackoverflow.com/a/24829409
 const getPosition = (element) => {
@@ -25,7 +24,7 @@ const getPosition = (element) => {
     x: xPosition,
     y: yPosition,
   };
-}
+};
 
 export const scrollIntoView = (elem, position) => {
   const offsetTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -70,4 +69,4 @@ export const scrollIntoView = (elem, position) => {
       window.clearInterval(interval);
     }
   }, 25);
-}
+};
