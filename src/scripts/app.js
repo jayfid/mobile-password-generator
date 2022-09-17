@@ -5,6 +5,7 @@ import {
 } from "./passwordForm";
 import VinylSelect from "./select";
 import PasswordGenerator from "./generator";
+import androidKeyboard from "./layouts/android";
 import iPhoneKeyboard from "./layouts/iphone";
 
 // Selects
@@ -60,6 +61,7 @@ if (initialOptions) {
 if (!window.passwordGenerator) {
   window.passwordGenerator = new PasswordGenerator();
   window.passwordGenerator.addKeyboard(iPhoneKeyboard);
+  window.passwordGenerator.addKeyboard(androidKeyboard);
 }
 
 generateAndDisplayPassword();
