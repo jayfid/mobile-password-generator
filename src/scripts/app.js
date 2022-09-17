@@ -1,10 +1,12 @@
 import {
   generateAndCopy,
   generateAndDisplayPassword,
-  showCopySuccess,
   submitPasswordForm,
-} from "./ui";
+
+} from "./passwordForm";
 import VinylSelect from "./select";
+import PasswordGenerator from "./generator";
+import iPhoneKeyboard from "./layouts/iphone";
 
 // Selects
 document.querySelectorAll(".select-style").forEach((item) => {
@@ -23,7 +25,7 @@ document
 document.querySelector("#password-field").addEventListener("click", () => {
   const textValue = document.querySelector("#password").value;
   navigator.clipboard.writeText(textValue).then(() => {
-    showCopySuccess();
+    document.querySelector(".copy-alert").classList.toggle("slide");
   });
 });
 
@@ -52,6 +54,12 @@ if (initialOptions) {
       foundElem.vinylSelect.setValue(item.value);
     }
   });
+}
+
+// Create Password Generator
+if (!window.passwordGenerator) {
+  window.passwordGenerator = new PasswordGenerator();
+  window.passwordGenerator.addKeyboard(iPhoneKeyboard);
 }
 
 generateAndDisplayPassword();

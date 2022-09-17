@@ -1,47 +1,6 @@
-import iPhoneKeyboard from "./layouts/iphone";
-import PasswordGenerator from "./generator";
-
-// Number of times to switch contexts during password generation.
-// May make sense to expose this under a "Password Strength toggle"
-const PASSWORD_CONTEXT_SWITCHES = 2;
-
-function updatePasswordField(text) {
-  document.querySelector("#password")?.setAttribute("value", text);
-}
-
-function focusPasswordField() {
-  const passwordInput = document.querySelector("#password");
-  passwordInput.removeAttribute("readonly");
-  passwordInput.focus();
-  passwordInput.setSelectionRange(0, 999);
-  passwordInput.setAttribute("readonly", "readonly");
-}
-
-export function generateAndDisplayPassword() {
-  const charLenInput = document.querySelector("#charlen");
-  const keyboardInput = document.querySelector("#keyboard");
-  const passwordInput = document.querySelector("#password");
-
-  if (charLenInput && keyboardInput && passwordInput) {
-    if (!window.passwordGenerator) {
-      window.passwordGenerator = new PasswordGenerator();
-      window.passwordGenerator.addKeyboard(iPhoneKeyboard);
-    }
-    const charLen = charLenInput.value;
-    const keyboardId = keyboardInput.value;
-    if (charLen && keyboardId) {
-      const newpass = window.passwordGenerator.generatePassword(
-        charLen,
-        keyboardId,
-        PASSWORD_CONTEXT_SWITCHES
-      );
-      updatePasswordField(newpass);
-    }
-  }
-}
 
 // credit - http://stackoverflow.com/a/5354536
-function checkVisible(elm) {
+export const checkVisible = (elm) => {
   const rect = elm.getBoundingClientRect();
   const viewHeight = Math.max(
     document.documentElement.clientHeight,
@@ -51,7 +10,7 @@ function checkVisible(elm) {
 }
 
 // credit - http://stackoverflow.com/a/24829409
-function getPosition(element) {
+const getPosition = (element) => {
   let xPosition = 0;
   let yPosition = 0;
   let localElement = element;
@@ -68,7 +27,7 @@ function getPosition(element) {
   };
 }
 
-function scrollIntoView(elem, position) {
+export const scrollIntoView = (elem, position) => {
   const offsetTop = window.pageYOffset || document.documentElement.scrollTop;
   const docTop = document.documentElement.clientTop || 0;
   let currentWindowYOffset = offsetTop - docTop;
@@ -111,23 +70,4 @@ function scrollIntoView(elem, position) {
       window.clearInterval(interval);
     }
   }, 25);
-}
-
-export function submitPasswordForm() {
-  const pwElem = document.querySelector("#password");
-  if (!checkVisible(pwElem)) {
-    scrollIntoView(pwElem, "bottom");
-  }
-  generateAndDisplayPassword();
-  focusPasswordField();
-}
-
-export function generateAndCopy() {
-  document.activeElement.blur();
-  submitPasswordForm();
-  document.querySelector("#password-field").click();
-}
-
-export function showCopySuccess() {
-  document.querySelector(".copy-alert").classList.toggle("slide");
 }
