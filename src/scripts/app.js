@@ -6,6 +6,7 @@ import {
 } from "./ui";
 import VinylSelect from "./select";
 
+// Selects
 document.querySelectorAll(".select-style").forEach((item) => {
   new VinylSelect(item); // eslint-disable-line no-new
 });
@@ -26,7 +27,7 @@ document.querySelector("#password-field").addEventListener("click", () => {
   });
 });
 
-// Save options
+// Persist Selections
 document.body.addEventListener("vinylSelectUpdate", () => {
   const options = [
     {
@@ -41,18 +42,16 @@ document.body.addEventListener("vinylSelectUpdate", () => {
   localStorage.setItem("mpg_options", JSON.stringify(options));
 });
 
-function initializeOptions() {
-  const initialOptions = localStorage.getItem("mpg_options");
-  if (initialOptions) {
-    const initialOptionsObj = JSON.parse(initialOptions);
-    initialOptionsObj.forEach((item) => {
-      const foundElem = document.getElementById(item.id);
-      if (foundElem && foundElem.tagName === "INPUT") {
-        foundElem.vinylSelect.setValue(item.value);
-      }
-    });
-  }
+// Load Previous Options
+const initialOptions = localStorage.getItem("mpg_options");
+if (initialOptions) {
+  const initialOptionsObj = JSON.parse(initialOptions);
+  initialOptionsObj.forEach((item) => {
+    const foundElem = document.getElementById(item.id);
+    if (foundElem && foundElem.tagName === "INPUT") {
+      foundElem.vinylSelect.setValue(item.value);
+    }
+  });
 }
-initializeOptions();
 
 generateAndDisplayPassword();
