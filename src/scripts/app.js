@@ -1,8 +1,6 @@
 import {
-  focusPasswordField,
   generateAndCopy,
   generateAndDisplayPassword,
-  iOS,
   showCopySuccess,
   submitPasswordForm,
 } from "./ui";
@@ -24,22 +22,15 @@ document.querySelector("#password-field").addEventListener("click", () => {
   });
 });
 
-// iOS does not allow copying via js
-if (!iOS()) {
-  document.querySelector(".action").classList.remove("hide");
-  // create a shortcut button to generate the pw and copy it at the same time
-  const copyAndGenBtn = document.createElement("button");
-  copyAndGenBtn.setAttribute("type", "button");
-  copyAndGenBtn.setAttribute("id", "generate-copy");
-  copyAndGenBtn.className = "btn-style-a";
-  copyAndGenBtn.innerHTML = "Generate and Copy to Clipboard";
-  copyAndGenBtn.addEventListener("click", generateAndCopy);
-  document.querySelector(".button-group").appendChild(copyAndGenBtn);
-} else {
-  document
-    .getElementById("password-field")
-    .addEventListener("click", focusPasswordField);
-}
+document.querySelector(".action").classList.remove("hide");
+// create a shortcut button to generate the pw and copy it at the same time
+const copyAndGenBtn = document.createElement("button");
+copyAndGenBtn.setAttribute("type", "button");
+copyAndGenBtn.setAttribute("id", "generate-copy");
+copyAndGenBtn.className = "btn-style-a";
+copyAndGenBtn.innerHTML = "Generate and Copy to Clipboard";
+copyAndGenBtn.addEventListener("click", generateAndCopy);
+document.querySelector(".button-group").appendChild(copyAndGenBtn);
 
 // Save options
 document.body.addEventListener("vinylSelectUpdate", () => {

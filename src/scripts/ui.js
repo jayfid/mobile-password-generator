@@ -4,7 +4,7 @@ function updatePasswordField(text) {
   document.querySelector("#password")?.setAttribute("value", text);
 }
 
-export function focusPasswordField() {
+function focusPasswordField() {
   const passwordInput = document.getElementById("password");
   passwordInput.removeAttribute("readonly");
   passwordInput.focus();
@@ -107,7 +107,6 @@ function scrollIntoView(elem, position) {
 }
 
 export function submitPasswordForm() {
-  document.querySelector(".copy-error").classList.remove("remove");
   const pwElem = document.querySelector("#password");
   if (!checkVisible(pwElem)) {
     scrollIntoView(pwElem, "bottom");
@@ -122,31 +121,6 @@ export function generateAndCopy() {
   document.querySelector("#password-field").click();
 }
 
-// show text to encourage manual copying
-export function showCopyError() {
-  document.querySelector(".copy-error").classList.add("show");
-}
-
 export function showCopySuccess() {
   document.querySelector(".copy-alert").classList.toggle("slide");
-}
-
-// credit - http://stackoverflow.com/a/9039885
-export function iOS() {
-  const iDevices = [
-    "iPad Simulator",
-    "iPhone Simulator",
-    "iPod Simulator",
-    "iPad",
-    "iPhone",
-    "iPod",
-  ];
-  if (navigator.platform) {
-    while (iDevices.length) {
-      if (navigator.platform === iDevices.pop()) {
-        return true;
-      }
-    }
-  }
-  return false;
 }
