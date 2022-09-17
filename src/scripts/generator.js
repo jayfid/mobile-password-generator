@@ -28,7 +28,7 @@ class PasswordGenerator {
       if (switchIndices.includes(password.length)) {
         currentKeyboard.nextContext();
       }
-      password += currentKeyboard.getNextCharacter();
+      password += currentKeyboard.getRandomCharacter();
     }
     return password;
   }

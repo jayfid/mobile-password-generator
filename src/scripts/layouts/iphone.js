@@ -1,6 +1,6 @@
 import KeyboardLayout from "../keyboard";
 
-const iPhoneKeyboard = new KeyboardLayout("iphone", "iPhone");
+const iPhoneKeyboard = new KeyboardLayout("iphone");
 iPhoneKeyboard.addContext(
   "alpha_lowercase",
   [

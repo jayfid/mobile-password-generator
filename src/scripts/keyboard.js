@@ -2,14 +2,12 @@ import KeyboardContext from "./keyboardContext";
 import { getRandomIntWithLimit } from "./random";
 
 class KeyboardLayout {
-  constructor(id, label) {
+  constructor(id) {
     this.id = id;
-    this.label = label;
     this.contexts = {};
     this.currentContext = null;
   }
 
-  // add/update context in lists of contexts
   addContext(id, characters, next) {
     const context = new KeyboardContext(id, characters, next);
     this.contexts[id] = context;
@@ -18,15 +16,13 @@ class KeyboardLayout {
     }
   }
 
-  // return count of characters in current context
   getCharacterCount() {
     if (this.currentContext) {
       return this.contexts[this.currentContext].characters.length;
     }
-    return false;
+    return 0;
   }
 
-  // return context with given id
   getContextById(id) {
     if (!this.contexts[id]) {
       throw Error("Keyboard with supplied id does not exist");
@@ -34,7 +30,6 @@ class KeyboardLayout {
     return this.contexts[id];
   }
 
-  // return value from character array at index
   getCharacterAtIndex(index) {
     if (index < this.getCharacterCount()) {
       return this.contexts[this.currentContext].characters[index];
@@ -42,14 +37,12 @@ class KeyboardLayout {
     throw Error("Index out of bounds");
   }
 
-  // return next "random" character
-  getNextCharacter() {
+  getRandomCharacter() {
     return this.getCharacterAtIndex(
       getRandomIntWithLimit(this.getCharacterCount())
     );
   }
 
-  // choose next context and replace current context with it
   nextContext() {
     const nextContextId =
       this.contexts[this.currentContext].getNextRandomContext();
