@@ -78,7 +78,7 @@ class VinylSelect {
 
   changeInit() {
     const handlerFunction = (e) => {
-      const valueChanged = (this.getValue() !== e.target.dataset.value);
+      const valueChanged = this.getValue() !== e.target.dataset.value;
       this.updateValue(e.target);
       this.close();
       if (!valueChanged) {
