@@ -1,6 +1,6 @@
 import KeyboardLayout from "../keyboard";
 
-const iPhoneKeyboard = new KeyboardLayout("iphone456", "iPhone 4/5/6");
+const iPhoneKeyboard = new KeyboardLayout("iphone", "iPhone");
 iPhoneKeyboard.addContext(
   "alpha_lowercase",
   [
@@ -31,7 +31,7 @@ iPhoneKeyboard.addContext(
     "n",
     "m",
   ],
-  ["alpha_uppercase"]
+  ["alpha_uppercase", "symbol_1"]
 );
 iPhoneKeyboard.addContext(
   "alpha_uppercase",
@@ -63,7 +63,7 @@ iPhoneKeyboard.addContext(
     "N",
     "M",
   ],
-  ["symbol_1"]
+  ["symbol_1", "alpha_lowercase"]
 );
 iPhoneKeyboard.addContext(
   "symbol_1",
@@ -94,7 +94,7 @@ iPhoneKeyboard.addContext(
     "!",
     "'",
   ],
-  ["alpha_lowercase", "symbol_1"]
+  ["alpha_lowercase", "symbol_2"]
 );
 iPhoneKeyboard.addContext(
   "symbol_2",
