@@ -41,6 +41,7 @@ document.body.addEventListener("vinylSelectUpdate", () => {
     },
   ];
   localStorage.setItem("mpg_options", JSON.stringify(options));
+  generateAndDisplayPassword();
 });
 
 // Load Previous Options

@@ -35,6 +35,10 @@ class VinylSelect {
     option.classList.add("select-style-default");
   }
 
+  getValue() {
+    return this.hiddenElem.value;
+  }
+
   setValue(value) {
     this.elem.querySelectorAll("p").forEach((item) => {
       if (value === item.dataset.value) this.updateValue(item);
@@ -74,8 +78,12 @@ class VinylSelect {
 
   changeInit() {
     const handlerFunction = (e) => {
+      const valueChanged = (this.getValue() !== e.target.dataset.value);
       this.updateValue(e.target);
       this.close();
+      if (!valueChanged) {
+        return;
+      }
       const ev = new Event("vinylSelectUpdate", {
         bubbles: true,
         cancelable: true,
