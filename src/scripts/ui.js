@@ -1,6 +1,7 @@
+import iPhoneKeyboard from "./layouts/iphone";
 import PasswordGenerator from "./generator";
 
-// number of times to switch contexts during password generation.
+// Number of times to switch contexts during password generation.
 // May make sense to expose this under a "Password Strength toggle"
 const PASSWORD_CONTEXT_SWITCHES = 2;
 
@@ -24,6 +25,7 @@ export function generateAndDisplayPassword() {
   if (charLenInput && keyboardInput && passwordInput) {
     if (!window.passwordGenerator) {
       window.passwordGenerator = new PasswordGenerator();
+      window.passwordGenerator.addKeyboard(iPhoneKeyboard);
     }
     const charLen = charLenInput.value;
     const keyboardId = keyboardInput.value;
