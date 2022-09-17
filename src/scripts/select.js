@@ -86,10 +86,6 @@ class VinylSelect {
       item.addEventListener("click", handlerFunction);
     });
   }
-
-  getValue() {
-    return this.hiddenElem.value;
-  }
 }
 
 export default VinylSelect;

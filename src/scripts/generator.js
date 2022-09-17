@@ -34,7 +34,6 @@ class PasswordGenerator {
   // setter method
   setCurrentKeyboard(keyboardId) {
     this.currentKeyboard = this.getKeyboardById(keyboardId);
-    this.currentKeyboard.resetContext();
   }
 
   // create and show a password

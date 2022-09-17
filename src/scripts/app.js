@@ -22,7 +22,6 @@ document.querySelector("#password-field").addEventListener("click", () => {
   });
 });
 
-document.querySelector(".action").classList.remove("hide");
 // create a shortcut button to generate the pw and copy it at the same time
 const copyAndGenBtn = document.createElement("button");
 copyAndGenBtn.setAttribute("type", "button");
@@ -37,11 +36,11 @@ document.body.addEventListener("vinylSelectUpdate", () => {
   const options = [
     {
       id: "charlen",
-      value: document.getElementById("charlen").value,
+      value: document.querySelector("#charlen").value,
     },
     {
       id: "keyboard",
-      value: document.getElementById("keyboard").value,
+      value: document.querySelector("#keyboard").value,
     },
   ];
   localStorage.setItem("mpg_options", JSON.stringify(options));

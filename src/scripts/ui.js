@@ -5,7 +5,7 @@ function updatePasswordField(text) {
 }
 
 function focusPasswordField() {
-  const passwordInput = document.getElementById("password");
+  const passwordInput = document.querySelector("#password");
   passwordInput.removeAttribute("readonly");
   passwordInput.focus();
   passwordInput.setSelectionRange(0, 999);
