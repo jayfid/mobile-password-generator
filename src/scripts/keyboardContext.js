@@ -14,8 +14,10 @@ class KeyboardContext {
     // Have a 70% chance of switching to the 0-index of the adjacent
     // contexts to prevent commonly switching back to contexts
     // that have already been used.
-    const diceRoll =  getRandomIntWithLimit(10) <= 7;
-    const nextIndex = (diceRoll) ? 0 : getRandomIntWithLimit(this.adjacentContexts.length);
+    const diceRoll = getRandomIntWithLimit(10) <= 7;
+    const nextIndex = diceRoll
+      ? 0
+      : getRandomIntWithLimit(this.adjacentContexts.length);
     return this.adjacentContexts[nextIndex];
   }
 }
