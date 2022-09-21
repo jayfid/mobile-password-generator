@@ -2,7 +2,7 @@ import { checkVisible, scrollIntoView } from "./ui";
 
 // Number of times to switch contexts during password generation.
 // May make sense to expose this under a "Password Strength toggle"
-const PASSWORD_CONTEXT_SWITCHES = 2;
+const PASSWORD_CONTEXT_SWITCHES = 3;
 
 const focusPasswordField = () => {
   const passwordInput = document.querySelector("#password");

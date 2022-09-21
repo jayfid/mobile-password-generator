@@ -21,7 +21,7 @@ class PasswordGenerator {
     const switchIndices = getUniqueRandomIntsWithLimit(
       charLen,
       contextSwitchCount,
-      1
+      2
     );
     let password = "";
     while (password.length < charLen) {
