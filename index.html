@@ -8,8 +8,8 @@
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+      function gtag(...args) {
+        dataLayer.push(args);
       }
       gtag("js", new Date());
 
@@ -55,6 +55,8 @@
                           width="7"
                           height="6"
                           viewBox="0 0 7 6"
+                          aria-hidden="true"
+                          focusable="false"
                         >
                           <path
                             class="cls-1 down-arrow"
@@ -100,6 +102,8 @@
                           width="7"
                           height="6"
                           viewBox="0 0 7 6"
+                          aria-hidden="true"
+                          focusable="false"
                         >
                           <path
                             class="cls-1 down-arrow"
@@ -181,5 +185,6 @@
         </footer>
       </div>
     </div>
+    <script type="module" src="/src/index.ts"></script>
   </body>
 </html>

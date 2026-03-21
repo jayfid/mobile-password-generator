@@ -1,5 +1,5 @@
 // credit - http://stackoverflow.com/a/5354536
-export const checkVisible = (elm) => {
+export const checkVisible = (elm: Element): boolean => {
   const rect = elm.getBoundingClientRect();
   const viewHeight = Math.max(
     document.documentElement.clientHeight,
@@ -9,15 +9,19 @@ export const checkVisible = (elm) => {
 };
 
 // credit - http://stackoverflow.com/a/24829409
-const getPosition = (element) => {
+const getPosition = (element: HTMLElement): { x: number; y: number } => {
   let xPosition = 0;
   let yPosition = 0;
-  let localElement = element;
+  let localElement: HTMLElement | null = element;
 
   while (localElement) {
-    xPosition += element.offsetLeft - element.scrollLeft + element.clientLeft;
-    yPosition += element.offsetTop - element.scrollTop + element.clientTop;
-    localElement = element.offsetParent;
+    xPosition +=
+      localElement.offsetLeft -
+      localElement.scrollLeft +
+      localElement.clientLeft;
+    yPosition +=
+      localElement.offsetTop - localElement.scrollTop + localElement.clientTop;
+    localElement = localElement.offsetParent as HTMLElement | null;
   }
 
   return {
@@ -26,12 +30,15 @@ const getPosition = (element) => {
   };
 };
 
-export const scrollIntoView = (elem, position) => {
+export const scrollIntoView = (
+  elem: HTMLElement,
+  position?: "bottom",
+): void => {
   const offsetTop = window.pageYOffset || document.documentElement.scrollTop;
   const docTop = document.documentElement.clientTop || 0;
   let currentWindowYOffset = offsetTop - docTop;
-  let elementWindowYOffset;
-  if (position && position === "bottom") {
+  let elementWindowYOffset: number;
+  if (position === "bottom") {
     const elemY = getPosition(elem).y + currentWindowYOffset;
     const elemHeight = elem.offsetHeight;
     const elemBottomPixel = elemY + elemHeight;

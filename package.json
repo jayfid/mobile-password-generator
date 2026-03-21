@@ -6,18 +6,19 @@
   "engines": {
     "node": ">=22.12"
   },
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "scripts": {
     "clean": "rm -rf node_modules dist",
     "format": "biome format --write .",
     "lint": "biome lint .",
     "check": "biome check .",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve",
-    "start": "webpack serve --host 0.0.0.0 --https",
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "build:prod": "vite build --mode production",
+    "dev": "vite",
+    "serve": "vite preview",
+    "start": "vite --host 0.0.0.0",
     "deploy": "aws s3 sync ./dist/ 's3://www.mobile-pw.xyz' --delete --cache-control public,max-age=315360000",
     "invalidate": "aws cloudfront create-invalidation --distribution-id EUA6EG112A282 --paths '/*' > /dev/null",
     "ship": "npm run-script build && npm run-script deploy && npm run-script invalidate"
@@ -33,19 +34,9 @@
   },
   "homepage": "https://github.com/jayfid/mobile-password-generator#readme",
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
-    "@webpack-cli/generators": "^3.0.7",
-    "babel-loader": "^8.3.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.8.1",
-    "html-webpack-plugin": "^5.5.3",
-    "mini-css-extract-plugin": "^2.7.6",
-    "style-loader": "^3.3.3",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.15.1"
+    "@biomejs/biome": "^2.4.8",
+    "@types/node": "^24.5.2",
+    "typescript": "^5.8.2",
+    "vite": "^8.0.1"
   }
 }
