@@ -22,7 +22,7 @@ export const generateAndDisplayPassword = () => {
   const newpass = window.passwordGenerator.generatePassword(
     charLen,
     keyboardId,
-    PASSWORD_CONTEXT_SWITCHES
+    PASSWORD_CONTEXT_SWITCHES,
   );
   document.querySelector("#password")?.setAttribute("value", newpass);
 };

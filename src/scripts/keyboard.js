@@ -39,7 +39,7 @@ class KeyboardLayout {
 
   getRandomCharacter() {
     return this.getCharacterAtIndex(
-      getRandomIntWithLimit(this.getCharacterCount())
+      getRandomIntWithLimit(this.getCharacterCount()),
     );
   }
 

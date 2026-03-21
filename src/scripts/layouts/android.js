@@ -33,7 +33,7 @@ androidKeyboard.addContext(
     ",",
     ".",
   ],
-  ["alpha_uppercase", "symbol_1"]
+  ["alpha_uppercase", "symbol_1"],
 );
 
 androidKeyboard.addContext(
@@ -68,7 +68,7 @@ androidKeyboard.addContext(
     ",",
     ".",
   ],
-  ["symbol_1", "alpha_lowercase"]
+  ["symbol_1", "alpha_lowercase"],
 );
 
 androidKeyboard.addContext(
@@ -104,7 +104,7 @@ androidKeyboard.addContext(
     ",",
     ".",
   ],
-  ["alpha_lowercase", "symbol_2"]
+  ["alpha_lowercase", "symbol_2"],
 );
 
 androidKeyboard.addContext(
@@ -140,7 +140,7 @@ androidKeyboard.addContext(
     "<",
     ">",
   ],
-  ["alpha_lowercase", "symbol_1"]
+  ["alpha_lowercase", "symbol_1"],
 );
 
 export default androidKeyboard;

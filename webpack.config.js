@@ -1,11 +1,10 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
-const path = require("path");
+const path = require("node:path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-const isProduction = process.env.NODE_ENV == "production";
+const isProduction = process.env.NODE_ENV === "production";
 const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -25,14 +24,12 @@ const config = {
       template: "src/index.html",
     }),
     new MiniCssExtractPlugin(),
-    new FaviconsWebpackPlugin({
-      logo: "assets/logo.svg",
-      outputPath: __dirname + "/dist/",
-      prefix: "",
-      mode: isProduction ? "webapp" : "light",
-    }),
     new CopyPlugin({
       patterns: [
+        {
+          from: "assets/favicon.ico",
+          to: "favicon.ico",
+        },
         {
           from: "assets/robots.txt",
           to: "robots.txt",
@@ -47,8 +44,8 @@ const config = {
         loader: "babel-loader",
       },
       {
-        test: /\.(sc|c)ss$/i,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|ico|txt)$/i,

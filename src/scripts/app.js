@@ -1,17 +1,17 @@
+import PasswordGenerator from "./generator";
+import androidKeyboard from "./layouts/android";
+import iPhoneKeyboard from "./layouts/iphone";
 import {
   generateAndCopy,
   generateAndDisplayPassword,
   submitPasswordForm,
 } from "./passwordForm";
 import VinylSelect from "./select";
-import PasswordGenerator from "./generator";
-import androidKeyboard from "./layouts/android";
-import iPhoneKeyboard from "./layouts/iphone";
 
 // Selects
-document.querySelectorAll(".select-style").forEach((item) => {
+for (const item of document.querySelectorAll(".select-style")) {
   new VinylSelect(item); // eslint-disable-line no-new
-});
+}
 
 // Buttons
 document
@@ -49,12 +49,12 @@ document.body.addEventListener("vinylSelectUpdate", () => {
 const initialOptions = localStorage.getItem("mpg_options");
 if (initialOptions) {
   const initialOptionsObj = JSON.parse(initialOptions);
-  initialOptionsObj.forEach((item) => {
+  for (const item of initialOptionsObj) {
     const foundElem = document.getElementById(item.id);
     if (foundElem && foundElem.tagName === "INPUT") {
       foundElem.vinylSelect.setValue(item.value);
     }
-  });
+  }
 }
 
 // Create Password Generator

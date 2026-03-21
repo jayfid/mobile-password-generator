@@ -1,0 +1,592 @@
+/*!
+ * Vinyl Siding
+ * A minor framework for web apps.
+ * License @ https://github.com/jayfid/vinyl/LICENSE
+ */
+
+@font-face {
+  font-family: Montserrat;
+  src: url("./fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("./fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url("./fonts/Montserrat-Light.woff2") format("woff2"),
+    url("./fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alfa Slab One";
+  src: url("./fonts/AlfaSlabOne-Regular.woff2") format("woff2"),
+    url("./fonts/AlfaSlabOne-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base, utilities, components;
+
+@layer base {
+  :root {
+    --color-accent: #157467;
+    --color-page: #e6e9ee;
+    --color-text: #161616;
+    --color-surface: #fff;
+    --font-body: "Montserrat", "Helvetica Neue", "Helvetica", "Arial",
+      sans-serif;
+    --font-heading: "Alfa Slab One", serif;
+
+    font-family: var(--font-body);
+    font-size: 14px;
+    text-size-adjust: 100%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+  }
+
+  body {
+    background: var(--color-page);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block;
+  }
+
+  audio:not([controls]),
+  template,
+  [hidden] {
+    display: none;
+  }
+
+  img {
+    border-style: none;
+  }
+
+  a {
+    background-color: transparent;
+  }
+
+  abbr[title] {
+    border-bottom: none;
+    text-decoration: underline dotted;
+  }
+
+  b,
+  strong {
+    font-weight: bolder;
+  }
+
+  dfn {
+    font-style: italic;
+  }
+
+  mark {
+    background-color: #ff0;
+    color: #000;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub,
+  sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1em;
+  }
+
+  figure {
+    margin: 1em 40px;
+  }
+
+  hr {
+    height: 0;
+    overflow: visible;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    margin: 0;
+    font: inherit;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    appearance: button;
+  }
+
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+
+  fieldset {
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+    border: 1px solid #c0c0c0;
+  }
+
+  legend {
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    color: inherit;
+    white-space: normal;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  textarea {
+    overflow: auto;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    padding: 0;
+  }
+
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  [type="search"] {
+    appearance: textfield;
+    outline-offset: -2px;
+  }
+
+  [type="search"]::-webkit-search-cancel-button,
+  [type="search"]::-webkit-search-decoration {
+    appearance: none;
+  }
+
+  ::placeholder {
+    color: inherit;
+    opacity: 0.54;
+  }
+
+  ::-webkit-file-upload-button {
+    appearance: button;
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 2.75rem;
+  }
+
+  h2 {
+    color: var(--color-text);
+    font-size: 1.714rem;
+    font-weight: 300;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    line-height: 1.25;
+  }
+
+  header {
+    background: #333 url("./mpg-banner.webp") no-repeat 0 0;
+  }
+}
+
+@layer utilities {
+  .noselect {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  .clearfix::before,
+  .clearfix::after {
+    display: table;
+    content: "";
+  }
+
+  .clearfix::after {
+    clear: both;
+  }
+
+  .font-size-a {
+    font-size: 1.1em;
+  }
+
+  .font-size-b {
+    font-size: 1.2em;
+  }
+
+  .font-size-c {
+    font-size: 1.3em;
+  }
+
+  .font-size-d {
+    font-size: 1.4em;
+  }
+
+  .font-size-e {
+    font-size: 1.5em;
+  }
+
+  .fancy-dan::after {
+    display: block;
+    width: 3.5714rem;
+    height: 0;
+    margin: 0 auto;
+    padding-top: 0.2143rem;
+    border-bottom: 0.2143rem solid #e36d6e;
+    line-height: 0;
+    content: "";
+  }
+
+  .display-text {
+    color: #232323;
+    font-size: 1rem;
+    line-height: 2.4rem;
+  }
+
+  .code-text,
+  code {
+    font-family:
+      "Nimbus Mono L",
+      Monaco,
+      "Courier New",
+      Consolas,
+      "Andale Mono WT",
+      "Andale Mono",
+      "Lucida Console",
+      "Lucida Sans Typewriter",
+      "DejaVu Sans Mono",
+      "Bitstream Vera Sans Mono",
+      "Liberation Mono",
+      Courier,
+      monospace;
+    white-space: pre;
+  }
+
+  .example-text {
+    padding: 5px 0;
+    text-align: center;
+    background-color: #dcdcdc;
+    border-radius: 3px;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .lean {
+    margin: 0;
+    padding: 0;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  small.copyright {
+    font-size: 0.8571rem;
+  }
+
+  .color-bg-black {
+    background-color: #000;
+  }
+
+  .color-bg-black.complimentary-color {
+    color: #4d4d4d;
+  }
+
+  .color-text-black {
+    color: #000;
+  }
+
+  .color-bg-white {
+    background-color: #fff;
+  }
+
+  .color-bg-white.complimentary-color {
+    color: #b3b3b3;
+  }
+
+  .color-text-white {
+    color: #fff;
+  }
+
+  .color-bg-red {
+    background-color: #d34c4c;
+  }
+
+  .color-bg-red.complimentary-color {
+    color: #6c1a1a;
+  }
+
+  .color-text-red {
+    color: #d34c4c;
+  }
+
+  .color-bg-orange {
+    background-color: #ea9847;
+  }
+
+  .color-bg-orange.complimentary-color {
+    color: #884c10;
+  }
+
+  .color-text-orange {
+    color: #ea9847;
+  }
+
+  .color-bg-yellow {
+    background-color: #f9ed5f;
+  }
+
+  .color-bg-yellow.complimentary-color {
+    color: #b8aa07;
+  }
+
+  .color-text-yellow {
+    color: #f9ed5f;
+  }
+
+  .color-bg-green {
+    background-color: #55e046;
+  }
+
+  .color-bg-green.complimentary-color {
+    color: #1e7914;
+  }
+
+  .color-text-green {
+    color: #55e046;
+  }
+
+  .color-bg-darkgreen {
+    background-color: #32ad25;
+  }
+
+  .color-bg-darkgreen.complimentary-color {
+    color: #8fe586;
+  }
+
+  .color-text-darkgreen {
+    color: #32ad25;
+  }
+
+  .color-bg-blue {
+    background-color: #3a9ef9;
+  }
+
+  .color-bg-blue.complimentary-color {
+    color: #055095;
+  }
+
+  .color-text-blue {
+    color: #3a9ef9;
+  }
+
+  .color-bg-indigo {
+    background-color: #904cf2;
+  }
+
+  .color-bg-indigo.complimentary-color {
+    color: #460b9a;
+  }
+
+  .color-text-indigo {
+    color: #904cf2;
+  }
+
+  .color-bg-violet {
+    background-color: #eb59ef;
+  }
+
+  .color-bg-violet.complimentary-color {
+    color: #9c0fa0;
+  }
+
+  .color-text-violet {
+    color: #eb59ef;
+  }
+}
+
+@layer components {
+  .title {
+    border-bottom: 1px solid currentcolor;
+    text-transform: uppercase;
+  }
+
+  .heading {
+    padding: 10px 0;
+    text-indent: 1rem;
+    background-color: #efefef;
+    border-color: #b7b7b7;
+    border-style: solid;
+    border-width: 1px 0;
+  }
+
+  #password-field {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  #password-field.focus {
+    color: #fff;
+    background-color: var(--color-accent);
+  }
+
+  #password-field.focus * {
+    cursor: pointer !important;
+    color: inherit;
+  }
+
+  #password-field input {
+    width: 100%;
+    margin-top: 0.3rem;
+    cursor: pointer;
+  }
+
+  .input .action {
+    min-width: 3.5rem;
+  }
+
+  .copy-alert {
+    position: absolute;
+    inset: 0;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-color: var(--color-accent);
+    transition: top 1.2s;
+  }
+
+  .copy-alert.slide {
+    top: 100%;
+  }
+
+  .jumbly {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  .password-segment {
+    font-size: 1.2rem;
+  }
+
+  .password-segment:not(:last-child) {
+    padding-right: 15px;
+  }
+}

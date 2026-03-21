@@ -31,7 +31,7 @@ iPhoneKeyboard.addContext(
     "n",
     "m",
   ],
-  ["alpha_uppercase", "symbol_1"]
+  ["alpha_uppercase", "symbol_1"],
 );
 iPhoneKeyboard.addContext(
   "alpha_uppercase",
@@ -63,7 +63,7 @@ iPhoneKeyboard.addContext(
     "N",
     "M",
   ],
-  ["symbol_1", "alpha_lowercase"]
+  ["symbol_1", "alpha_lowercase"],
 );
 iPhoneKeyboard.addContext(
   "symbol_1",
@@ -94,7 +94,7 @@ iPhoneKeyboard.addContext(
     "!",
     "'",
   ],
-  ["alpha_lowercase", "symbol_2"]
+  ["alpha_lowercase", "symbol_2"],
 );
 iPhoneKeyboard.addContext(
   "symbol_2",
@@ -125,7 +125,7 @@ iPhoneKeyboard.addContext(
     "!",
     "`",
   ],
-  ["alpha_lowercase", "symbol_1"]
+  ["alpha_lowercase", "symbol_1"],
 );
 
 export default iPhoneKeyboard;

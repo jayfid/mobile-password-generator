@@ -4,9 +4,9 @@
 const handleClickWhileOpen = (e) => {
   const parentFound = e.target.closest(".processed-select-style");
   if (!parentFound) {
-    document.querySelectorAll(".processed-select-style").forEach((item) => {
+    for (const item of document.querySelectorAll(".processed-select-style")) {
       item.classList.remove("show");
-    });
+    }
     document.body.removeEventListener("click", handleClickWhileOpen, true);
   }
 };
@@ -29,9 +29,9 @@ class VinylSelect {
   updateValue(option) {
     this.hiddenElem.value = option.dataset.value;
     this.displayText.innerHTML = option.innerHTML;
-    this.elem
-      .querySelectorAll("p")
-      .forEach((item) => item.classList.remove("select-style-default"));
+    for (const item of this.elem.querySelectorAll("p")) {
+      item.classList.remove("select-style-default");
+    }
     option.classList.add("select-style-default");
   }
 
@@ -40,9 +40,9 @@ class VinylSelect {
   }
 
   setValue(value) {
-    this.elem.querySelectorAll("p").forEach((item) => {
+    for (const item of this.elem.querySelectorAll("p")) {
       if (value === item.dataset.value) this.updateValue(item);
-    });
+    }
   }
 
   init() {
@@ -70,7 +70,7 @@ class VinylSelect {
           document.body.removeEventListener(
             "click",
             handleClickWhileOpen,
-            true
+            true,
           );
         }
       });
@@ -90,9 +90,9 @@ class VinylSelect {
       });
       document.body.dispatchEvent(ev);
     };
-    this.elem.querySelectorAll("p").forEach((item) => {
+    for (const item of this.elem.querySelectorAll("p")) {
       item.addEventListener("click", handlerFunction);
-    });
+    }
   }
 }
 
