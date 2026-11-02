@@ -48,7 +48,7 @@ export const scrollIntoView = (
       document.documentElement.clientHeight ||
       document.body.clientHeight;
     const calculatedOffset = elemBottomPixel - windowHeight + extraSpacePixels;
-    elementWindowYOffset = calculatedOffset >= 0 ? calculatedOffset : 0;
+    elementWindowYOffset = Math.max(calculatedOffset, 0);
   } else {
     elementWindowYOffset = getPosition(elem).y;
   }

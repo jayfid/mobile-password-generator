@@ -631,12 +631,6 @@
     color: inherit;
   }
 
-  #password-field input {
-    width: 100%;
-    margin-top: 0.3rem;
-    cursor: pointer;
-  }
-
   .input .action {
     min-width: 3.5rem;
   }
@@ -689,6 +683,12 @@
     display: inline-block;
     vertical-align: middle;
     font-size: 1.286rem;
+  }
+
+  #password-field input {
+    width: 100%;
+    margin-top: 0.3rem;
+    cursor: pointer;
   }
 
   .style-a .input .label {

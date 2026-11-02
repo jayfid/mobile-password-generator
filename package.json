@@ -4,7 +4,7 @@
   "description": "Mobile Password Generator",
   "private": true,
   "engines": {
-    "node": ">=22.12"
+    "node": ">=24.15"
   },
   "main": "src/index.ts",
   "scripts": {
@@ -34,9 +34,9 @@
   },
   "homepage": "https://github.com/jayfid/mobile-password-generator#readme",
   "devDependencies": {
-    "@biomejs/biome": "^2.4.8",
+    "@biomejs/biome": "^2.6.4",
     "@types/node": "^24.5.2",
-    "typescript": "^5.8.2",
-    "vite": "^8.0.5"
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
   }
 }
