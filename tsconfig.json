@@ -8,7 +8,7 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "lib": ["DOM", "DOM.Iterable", "ES2021"],
-    "types": ["node"]
+    "types": ["node", "vite/client"]
   },
   "include": ["src/**/*", "vite.config.mts"]
 }
