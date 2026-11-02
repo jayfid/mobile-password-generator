@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Mobile Password Generator",
   "private": true,
+  "packageManager": "pnpm@12.16.1",
   "engines": {
     "node": ">=24.15"
   },
@@ -21,7 +22,7 @@
     "start": "vite --host 0.0.0.0",
     "deploy": "aws s3 sync ./dist/ 's3://www.mobile-pw.xyz' --delete --cache-control public,max-age=315360000",
     "invalidate": "aws cloudfront create-invalidation --distribution-id EUA6EG112A282 --paths '/*' > /dev/null",
-    "ship": "npm run-script build && npm run-script deploy && npm run-script invalidate"
+    "ship": "pnpm run build && pnpm run deploy && pnpm run invalidate"
   },
   "repository": {
     "type": "git",
